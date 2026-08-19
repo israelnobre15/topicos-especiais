@@ -23,8 +23,12 @@ class Biblioteca:
 
         return livro
 
-    def consultar(self,codigo:int):
-        print(self.consultar_por_id(codigo=codigo).__dict__)
+    def consultar(self, codigo: int) -> None:
+        try:
+            livro = self.consultar_por_id(codigo)
+            print(livro.__dict__)
+        except ValueError as e:
+            print(f"Erro: {e}")
 
     def cadastrar(self, codigo: int, titulo: str, autor: str, ano_publicacao: int) -> bool:
         try:
