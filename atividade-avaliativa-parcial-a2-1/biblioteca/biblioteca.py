@@ -5,6 +5,8 @@ class Biblioteca:
 
     def __init__(self):
         self.estoque: List[Livro] = []
+
+        # Dicionário de opções dos métodos que serão chamados
         self.opcoes: Dict[str, Callable[[], None]] = {
             "1": self.cadastrar,
             "2": self.consultar,
@@ -16,6 +18,7 @@ class Biblioteca:
         }
 
     def consultar_por_id(self, codigo: int) -> Livro:
+        # Método que realiza a consulta de forma direta na lista
         livro = next((livro for livro in self.estoque if livro.codigo == codigo), None)
 
         if not livro:
@@ -24,6 +27,7 @@ class Biblioteca:
         return livro
 
     def consultar(self, codigo: int) -> None:
+        # Método acessado pela classe para realizar a visualização dos dados
         try:
             livro = self.consultar_por_id(codigo)
             print(livro.__dict__)
@@ -31,6 +35,7 @@ class Biblioteca:
             print(f"Erro: {e}")
 
     def cadastrar(self, codigo: int, titulo: str, autor: str, ano_publicacao: int) -> bool:
+        #Método que permite o cadastro de um novo livro no sistema
         try:
             self.consultar_por_id(codigo=codigo)
             print(f"Livro com codigo {codigo} ja existe!")
@@ -48,6 +53,7 @@ class Biblioteca:
             return True
 
     def listar(self) -> None:
+        # Método que permite a visualização de todos os livros da lista
         if not self.estoque:
             print("Nenhum livro cadastrado!")
             return
@@ -63,6 +69,7 @@ class Biblioteca:
             print("-" * 50)
 
     def emprestar(self, codigo: int) -> None:
+        # Método responsável por realizar o emprestimo de um livro, chamando a função interna do livro para alteração
         try:
             livro = self.consultar_por_id(codigo=codigo)
 
@@ -75,6 +82,7 @@ class Biblioteca:
             print(f"Erro: {v}")
 
     def devolver(self, codigo: int) -> None:
+        # Método responsável por administrar a devolução de um livro
         try:
             livro = self.consultar_por_id(codigo=codigo)
             
@@ -87,6 +95,7 @@ class Biblioteca:
             print(f"Erro: {v}")
 
     def excluir(self, codigo: int) -> None:
+        # Método responsável pela exclusão 
         try:
             livro = self.consultar_por_id(codigo=codigo)
             
@@ -101,9 +110,11 @@ class Biblioteca:
             print(f"Erro: {v}")
 
     def sair(self) -> None:
+        # Método responsável por printar os dados de saida
         print("Ate logo!")
 
     def gestao_livros(self) -> None:
+        # Método que administra quais sera o fluxo de funcionamento do dados, faz a utilização de chamadas por dicionário para evitar parte do acoplamento com condicionais.
         while True:
             print("\n" + "=" * 40)
             print("SISTEMA DE GESTAO DE LIVROS")
