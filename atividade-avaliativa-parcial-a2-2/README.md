@@ -73,16 +73,6 @@ Aplicação web para gerenciamento de tarefas em grupo, no estilo Trello, desenv
 5. Os cartões do dashboard funcionam como atalhos de filtro por status.
 6. Use **Sair** para encerrar a sessão.
 
-## Executando os testes
-
-Com o ambiente virtual ativado, a partir da pasta `gerenciamento_tarefas`:
-
-```bash
-python manage.py test
-```
-
-A suíte cobre autenticação (cadastro, login, logout, senha hasheada), permissões de edição/exclusão (criador, responsável e estranho), filtragem por status, escopo das listas e o dashboard.
-
 ## Estrutura do projeto
 
 ```
