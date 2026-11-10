@@ -1,0 +1,19 @@
+[project]
+name = "atividade-ml"
+version = "0.1.0"
+description = "Atividade avaliativa: classificação de tumores (Breast Cancer Wisconsin) e regressão linear do valor de imóveis (California Housing)"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.4",
+    "pandas>=3.1.1",
+    "scikit-learn>=1.9.1",
+    "seaborn>=0.13.2",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.4.0",
+    "jupyter>=1.1.1",
+    "nbconvert>=7.17.2",
+]
